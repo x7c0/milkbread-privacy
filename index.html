@@ -1,9 +1,27 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>우유식빵(Milkbread) 개인정보처리방침</title>
+  <title>Milkbread Privacy Policy</title>
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("milkbread-privacy-lang"); } catch (e) {}
+      var lang = saved === "ko" || saved === "en" ? saved : "en";
+      if (saved !== "ko" && saved !== "en") {
+        var list = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < list.length; i++) {
+          if (/^ko\b/i.test(String(list[i] || ""))) { lang = "ko"; break; }
+        }
+      }
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.lang = lang;
+      document.title = lang === "ko"
+        ? "우유식빵(Milkbread) 개인정보처리방침"
+        : "Milkbread Privacy Policy";
+    })();
+  </script>
   <style>
     :root {
       --fg: #1a1a1a;
@@ -31,6 +49,24 @@
       border-radius: 12px;
       padding: 1.75rem 1.5rem;
     }
+    .langs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .langs button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--fg);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font: inherit;
+      cursor: pointer;
+    }
+    .langs button[aria-pressed="true"] {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+    .lang { display: none; }
+    html[data-lang="ko"] .lang-ko { display: block; }
+    html[data-lang="en"] .lang-en { display: block; }
     h1 {
       font-size: 1.5rem;
       margin: 0 0 0.35rem;
@@ -41,10 +77,7 @@
       font-size: 0.9rem;
       margin-bottom: 1.75rem;
     }
-    h2 {
-      font-size: 1.1rem;
-      margin: 1.75rem 0 0.6rem;
-    }
+    h2 { font-size: 1.1rem; margin: 1.75rem 0 0.6rem; }
     p, li { font-size: 0.98rem; }
     ul { padding-left: 1.2rem; }
     a { color: #0b57d0; }
@@ -53,100 +86,163 @@
 <body>
   <main>
     <article class="card">
-      <h1>우유식빵(Milkbread) 개인정보처리방침</h1>
-      <p class="meta">최종 업데이트: 2026-09-22</p>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+      </div>
 
-      <p>
-        운영자(개발자)는 모바일 애플리케이션 「우유식빵」(영문명: Milkbread,
-        패키지명: com.hasanty.milkbread, 이하 “앱”)의 개인정보 처리에 관하여
-        다음과 같이 안내합니다.
-      </p>
+      <div class="lang lang-en">
+        <h1>Milkbread Privacy Policy</h1>
+        <p class="meta">Last updated: October 25, 2026</p>
+        <p>The developer of the mobile app “Milkbread” (Korean name: 우유식빵, package name: com.hasanty.milkbread, the “App”) explains how information is handled as follows.</p>
 
-      <h2>1. 수집하는 정보</h2>
-      <p>
-        앱은 <strong>회원 가입·로그인 계정</strong>을 제공하지 않으며, 개발자 서버에
-        사용자 계정을 두지 않습니다.
-      </p>
-      <p>앱 이용 과정에서 다음 정보가 <strong>사용자 기기에 저장</strong>될 수 있습니다.</p>
-      <ul>
-        <li>
-          사용자가 저장한 링크(URL), 제목, 설명(메모), 썸네일 주소, 폴더 정보,
-          정렬·선택 등 앱 사용을 위한 설정 값
-        </li>
-      </ul>
-      <p>위 정보는 기본적으로 <strong>기기 내부(로컬 저장소)</strong>에만 보관됩니다.</p>
+        <h2>1. Information the App stores</h2>
+        <p>The App does not offer accounts or sign-in, and the developer does not keep a user account on the developer’s own server.</p>
+        <p>While you use the App, the following may be stored on your device:</p>
+        <ul>
+          <li>Links (URLs) you save, titles, notes, thumbnail addresses, folders, and settings such as sort order</li>
+        </ul>
+        <p>This information stays on your device (local storage).</p>
 
-      <h2>2. 네트워크 이용 (미리보기)</h2>
-      <p>
-        링크 미리보기(제목·설명·썸네일 등)를 위해, 앱이 사용자가 입력·공유한 URL로
-        <strong>인터넷 요청</strong>을 보낼 수 있습니다. 이 과정에서 해당 URL이
-        <strong>해당 웹사이트 또는 공개 메타데이터 제공 지점</strong>으로 전달될 수 있습니다.
-      </p>
-      <ul>
-        <li>목적: 앱 기능(미리보기 표시)</li>
-        <li>개발자가 별도 클라우드에 링크 목록을 수집·보관하지 않습니다.</li>
-        <li>
-          사용자가 <code>http://</code> 주소를 저장한 경우, 해당 프로토콜로 요청이
-          이루어질 수 있습니다.
-        </li>
-      </ul>
+        <h2>2. Network use (link previews)</h2>
+        <p>To show a preview (title, description, thumbnail), the App may request the URL you entered or shared. That URL is sent to the website, or to a public metadata source, so the preview can be loaded.</p>
+        <ul>
+          <li>Purpose: to show the preview inside the App</li>
+          <li>The developer does not collect or store your link list in a separate cloud</li>
+          <li>If you save an <code>http://</code> address, the request may use that protocol</li>
+        </ul>
 
-      <h2>3. 공유 기능</h2>
-      <ul>
-        <li>
-          <strong>다른 앱에서 공유받기:</strong> 사용자가 다른 앱의 공유 기능으로 보낸
-          텍스트/URL을 앱이 받아 저장할 수 있습니다.
-        </li>
-        <li>
-          <strong>다른 앱으로 공유하기:</strong> 사용자가 공유를 선택한 경우에 한해,
-          선택한 앱으로 링크 정보가 전달될 수 있습니다.
-        </li>
-      </ul>
+        <h2>3. Sharing</h2>
+        <ul>
+          <li>Receiving a share: if you share text or a URL from another app into Milkbread, the App can save it.</li>
+          <li>Sharing out: only when you choose to share, the link can be passed to the app you select.</li>
+        </ul>
 
-      <h2>4. 제3자 제공·판매</h2>
-      <p>
-        앱은 광고·마케팅·분석 목적으로 개인정보를 판매하거나, 광고 네트워크에 사용자
-        데이터를 제공하지 않습니다. (향후 광고·분석·계정 기능을 추가하는 경우, 본
-        방침과 Google Play 데이터 안전성 설문을 갱신합니다.)
-      </p>
-      <p>미리보기 요청의 상대방 웹사이트는 각 사이트의 자체 정책을 따릅니다.</p>
+        <h2>4. Advertising (Google AdMob)</h2>
+        <p>The App shows ads through Google AdMob. When an ad is shown, Google may process the following to deliver ads, measure them, prevent fraud, and show personalized ads where you allow it:</p>
+        <ul>
+          <li>Advertising ID</li>
+          <li>IP address, which may be used to estimate a coarse location</li>
+          <li>Device information, such as device type, operating system version, and language</li>
+          <li>Interactions with ads, such as the fact that an ad was shown or clicked</li>
+        </ul>
+        <p>The developer does not collect this advertising information onto the developer’s own server. Google handles it under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+        <p>In the European Economic Area, the United Kingdom, Switzerland, and certain US states, the App may show a privacy choices message about ads. Whether you see personalized ads depends on that choice and on your device settings. The developer does not sell your personal information for money.</p>
+        <p>On Android, you can reset or delete your advertising ID in device settings to limit personalized ads.</p>
+        <p>Websites that receive a preview request follow their own policies.</p>
 
-      <h2>5. 보관 및 삭제</h2>
-      <ul>
-        <li>
-          보관: 사용자가 앱에서 삭제하거나 앱을 제거할 때까지 기기에 보관될 수 있습니다.
-        </li>
-        <li>
-          삭제: 앱 내 삭제(휴지통·영구 삭제 등)로 데이터를 지울 수 있습니다. 앱을
-          삭제하면 기기에 남은 로컬 데이터도 함께 제거되는 것이 일반적입니다.
-        </li>
-        <li>
-          개발자 서버에 보관된 계정 데이터가 없으므로, 서버 측 “계정 삭제 요청”
-          절차는 해당이 없습니다.
-        </li>
-      </ul>
+        <h2>5. Retention and deletion</h2>
+        <ul>
+          <li>Links you save can remain on the device until you delete them in the App or uninstall the App.</li>
+          <li>You can delete links in the App. Uninstalling the App generally removes the local data left on the device.</li>
+          <li>There is no server-side account to delete, because the developer does not store account data.</li>
+          <li>How long Google keeps an advertising ID and ad-related information is described in Google’s policy.</li>
+        </ul>
 
-      <h2>6. 아동</h2>
-      <p>앱은 아동을 대상으로 설계·마케팅하지 않습니다.</p>
+        <h2>6. Children</h2>
+        <p>The App is not designed or marketed for children, and ads are not requested as child-directed.</p>
 
-      <h2>7. 권한</h2>
-      <p>
-        앱은 링크 미리보기·썸네일 로드 등을 위해 <strong>인터넷</strong> 접근이 필요할
-        수 있습니다.
-      </p>
+        <h2>7. Permissions</h2>
+        <p>The App may need internet access to load link previews and to show ads. On Android, it may access the advertising ID in order to show ads.</p>
 
-      <h2>8. 문의</h2>
-      <p>개인정보 처리에 관한 문의:</p>
-      <ul>
-        <li>이메일: <a href="mailto:0x7c00@naver.com">0x7c00@naver.com</a></li>
-      </ul>
+        <h2>8. Contact</h2>
+        <p>Questions about this policy:</p>
+        <ul>
+          <li>Email: <a href="mailto:0x7c00@naver.com">0x7c00@naver.com</a></li>
+        </ul>
 
-      <h2>9. 방침 변경</h2>
-      <p>
-        본 방침은 기능·법령·스토어 정책 변경에 따라 수정될 수 있으며, 중요한 변경 시
-        앱 또는 본 페이지에 게시합니다.
-      </p>
+        <h2>9. Changes</h2>
+        <p>This policy may change when the App, the law, or store rules change. Material changes will be posted on this page.</p>
+      </div>
+
+      <div class="lang lang-ko">
+        <h1>우유식빵(Milkbread) 개인정보처리방침</h1>
+        <p class="meta">최종 업데이트: 2026-10-25</p>
+        <p>운영자(개발자)는 모바일 애플리케이션 「우유식빵」(영문명: Milkbread, 패키지명: com.hasanty.milkbread, 이하 “앱”)의 개인정보 처리에 관하여 다음과 같이 안내합니다.</p>
+
+        <h2>1. 수집하는 정보</h2>
+        <p>앱은 회원 가입·로그인 계정을 제공하지 않으며, 개발자 서버에 사용자 계정을 두지 않습니다.</p>
+        <p>앱 이용 과정에서 다음 정보가 사용자 기기에 저장될 수 있습니다.</p>
+        <ul>
+          <li>사용자가 저장한 링크(URL), 제목, 설명(메모), 썸네일 주소, 폴더 정보, 정렬·선택 등 앱 사용을 위한 설정 값</li>
+        </ul>
+        <p>위 정보는 기본적으로 기기 내부(로컬 저장소)에만 보관됩니다.</p>
+
+        <h2>2. 네트워크 이용 (미리보기)</h2>
+        <p>링크 미리보기(제목·설명·썸네일 등)를 위해, 앱이 사용자가 입력·공유한 URL로 인터넷 요청을 보낼 수 있습니다. 이 과정에서 해당 URL이 해당 웹사이트 또는 공개 메타데이터 제공 지점으로 전달될 수 있습니다.</p>
+        <ul>
+          <li>목적: 앱 기능(미리보기 표시)</li>
+          <li>개발자가 별도 클라우드에 링크 목록을 수집·보관하지 않습니다.</li>
+          <li>사용자가 <code>http://</code> 주소를 저장한 경우, 해당 프로토콜로 요청이 이루어질 수 있습니다.</li>
+        </ul>
+
+        <h2>3. 공유 기능</h2>
+        <ul>
+          <li>다른 앱에서 공유받기: 사용자가 다른 앱의 공유 기능으로 보낸 텍스트/URL을 앱이 받아 저장할 수 있습니다.</li>
+          <li>다른 앱으로 공유하기: 사용자가 공유를 선택한 경우에 한해, 선택한 앱으로 링크 정보가 전달될 수 있습니다.</li>
+        </ul>
+
+        <h2>4. 광고 (Google AdMob)</h2>
+        <p>앱은 Google AdMob으로 광고를 표시합니다. 광고가 나올 때 Google은 광고 제공, 성과 측정, 부정 이용 방지, 그리고 사용자가 허용한 범위의 맞춤 광고를 위해 다음 정보를 처리할 수 있습니다.</p>
+        <ul>
+          <li>광고 ID</li>
+          <li>IP 주소. IP 주소로 대략적인 위치가 추정될 수 있습니다.</li>
+          <li>기기 정보(기기 종류, 운영체제 버전, 언어 등)</li>
+          <li>광고와의 상호작용(광고가 보인 사실, 클릭 등)</li>
+        </ul>
+        <p>개발자는 위 정보를 자체 서버에 모아 보관하지 않습니다. 광고와 관련된 정보의 처리는 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>을 따릅니다.</p>
+        <p>유럽경제지역, 영국, 스위스와 미국 일부 주에서는 앱이 광고 개인정보 선택 창을 보여줄 수 있습니다. 맞춤 광고를 볼지는 그 선택과 기기 설정에 따릅니다. 개발자는 개인정보를 금전을 받고 판매하지 않습니다.</p>
+        <p>Android에서는 기기 설정의 광고 ID를 재설정하거나 삭제해 맞춤 광고를 제한할 수 있습니다.</p>
+        <p>미리보기 요청이 전달되는 웹사이트는 각 사이트의 자체 정책을 따릅니다.</p>
+
+        <h2>5. 보관 및 삭제</h2>
+        <ul>
+          <li>보관: 사용자가 저장한 링크 등은 사용자가 앱에서 삭제하거나 앱을 제거할 때까지 기기에 보관될 수 있습니다.</li>
+          <li>삭제: 앱 안에서 링크를 삭제할 수 있습니다. 앱을 삭제하면 기기에 남은 로컬 데이터도 함께 제거되는 것이 일반적입니다.</li>
+          <li>개발자 서버에 보관된 계정 데이터가 없으므로, 서버에 대한 계정 삭제 요청 절차는 없습니다.</li>
+          <li>광고 ID와 광고 관련 정보의 보관 기간은 Google 정책을 따릅니다.</li>
+        </ul>
+
+        <h2>6. 아동</h2>
+        <p>앱은 아동을 대상으로 설계하거나 마케팅하지 않습니다. 광고도 아동용으로 요청하지 않습니다.</p>
+
+        <h2>7. 권한</h2>
+        <p>앱은 링크 미리보기와 광고 표시를 위해 인터넷 접근이 필요할 수 있습니다. Android에서는 광고 표시를 위해 광고 ID에 접근할 수 있습니다.</p>
+
+        <h2>8. 문의</h2>
+        <p>개인정보 처리에 관한 문의:</p>
+        <ul>
+          <li>이메일: <a href="mailto:0x7c00@naver.com">0x7c00@naver.com</a></li>
+        </ul>
+
+        <h2>9. 방침 변경</h2>
+        <p>본 방침은 기능, 법령, 스토어 정책이 바뀌면 수정될 수 있습니다. 중요한 변경은 이 페이지에 게시합니다.</p>
+      </div>
     </article>
   </main>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".langs button");
+      function apply(lang, save) {
+        document.documentElement.lang = lang;
+        document.documentElement.dataset.lang = lang;
+        document.title = lang === "ko"
+          ? "우유식빵(Milkbread) 개인정보처리방침"
+          : "Milkbread Privacy Policy";
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-lang") === lang ? "true" : "false");
+        }
+        if (save) {
+          try { localStorage.setItem("milkbread-privacy-lang", lang); } catch (e) {}
+        }
+      }
+      apply(document.documentElement.dataset.lang || "en", false);
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function () {
+          apply(this.getAttribute("data-lang"), true);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
